@@ -9,12 +9,14 @@ const textStyle = StyleSheet.create({
 
 const StyledText = ({ name, styledText, children }) => {
 
+  // console.log("typeof name", name)
+
     const useStyle = [
       styledText && textStyle.text,
       name ? theme.profileTitle : null
     ]
   
-    return <Text>{ children }</Text>
+    return <Text style={useStyle}>{ children }</Text>
   }
 
   export default StyledText

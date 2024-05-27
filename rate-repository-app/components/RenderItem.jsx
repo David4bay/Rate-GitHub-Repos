@@ -1,4 +1,6 @@
-import { View, StyleSheet, Image } from "react-native"
+import { View, StyleSheet, Image, FlatList } from "react-native"
+import SingleRepoHeader from "./SingleRepoHeader"
+import SingleRepoFooter from "./SingleRepoFooter"
 import StyledText from "./StyledText"
 
 const styles = StyleSheet.create({
@@ -9,43 +11,37 @@ const styles = StyleSheet.create({
       width: 50,
       height: 50,
       borderRadius: 5
+    },
+    contentStyle: {
+      display: 'flex',
+      flexDirection: 'row',
+      paddingLeft: 5
     }
   })
 
-  const containerStyle = [
-    styles.container
-  ]
+  const RenderItem = ({item}) => {
+    
+    const containerStyle = [
+      styles.container
+    ]
 
-  const viewStyle = [
-    styles.imageStyle
-  ]
+    const viewStyle = [
+      styles.imageStyle
+    ]
 
-const RenderItem = ({item}) => {
-  
+    const profileStyle = [
+      styles.contentStyle
+    ]
+
     return (
       <View style={containerStyle}>
-        <View>
-        <Image style={viewStyle} src={item.ownerAvatarUrl} alt='ownerAvatar' />
+        <View style={profileStyle}>
+          <Image style={viewStyle} src={item.ownerAvatarUrl} alt='ownerAvatar' />
+          <SingleRepoHeader item={item} />
         </View>
         <View>
-            <StyledText styledText name >Full name: {item.fullName}</StyledText>
-            <StyledText styledText >Description: {item.description}</StyledText>
-            <StyledText styledText >Language: {item.language}</StyledText>
+          <SingleRepoFooter item={item} />
         </View>
-        <View>
-          <View>
-            <StyledText styledText >Stars: {item.stargazersCount}</StyledText>
-          </View>
-          <View>
-            <StyledText styledText >Forks: {item.forksCount}</StyledText>
-          </View>
-          <View>
-            <StyledText styledText >Rating: {item.ratingAverage}</StyledText>
-          </View>
-          <View>
-            <StyledText styledText >Reviews: {item.reviewCount}</StyledText>
-          </View>
-          </View>
       </View>
     )
   }

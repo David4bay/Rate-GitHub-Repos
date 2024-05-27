@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     minHeight: 100,
+    minWidth: 100,
+    overflow: 'scroll',
     marginRight: 10
   },
 });
