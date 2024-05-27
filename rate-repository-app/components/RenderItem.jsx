@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
       paddingLeft: 10
     },
     imageStyle: {
-      width: 20,
-      height: 20,
-      resizeMode: 'stretch'
+      width: 50,
+      height: 50,
+      borderRadius: 5
     }
   })
 
@@ -16,20 +16,36 @@ const styles = StyleSheet.create({
     styles.container
   ]
 
+  const viewStyle = [
+    styles.imageStyle
+  ]
+
 const RenderItem = ({item}) => {
   
     return (
       <View style={containerStyle}>
         <View>
-        <Image style={styles.imageStyle} src={item.ownerAvatarUrl} alt='ownerAvatar4' />
+        <Image style={viewStyle} src={item.ownerAvatarUrl} alt='ownerAvatar' />
         </View>
-            <StyledText styledText >Full name: {item.fullName}</StyledText>
+        <View>
+            <StyledText styledText name >Full name: {item.fullName}</StyledText>
             <StyledText styledText >Description: {item.description}</StyledText>
             <StyledText styledText >Language: {item.language}</StyledText>
+        </View>
+        <View>
+          <View>
             <StyledText styledText >Stars: {item.stargazersCount}</StyledText>
+          </View>
+          <View>
             <StyledText styledText >Forks: {item.forksCount}</StyledText>
+          </View>
+          <View>
             <StyledText styledText >Rating: {item.ratingAverage}</StyledText>
+          </View>
+          <View>
             <StyledText styledText >Reviews: {item.reviewCount}</StyledText>
+          </View>
+          </View>
       </View>
     )
   }

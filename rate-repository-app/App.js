@@ -2,10 +2,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import AppBar from './components/AppBar';
 import RepositoryList from './components/RepositoryList';
+import { notchTitle } from './components/utils/utils'
 
-export default function App() {
-
-  const notchTitle = 'Repositories'
+function App() {
 
   return (
     <View style={styles.container}>
@@ -17,11 +16,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // textOverflow: 'ellipsis',
     backgroundColor: '#fff',
-    minHeight: '100vh'
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    minHeight: 100,
+    marginRight: 10
   },
 });
+
+export default App

@@ -19,6 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
+        "package": "com.rategithubrepos.rategithubrepos",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }

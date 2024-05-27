@@ -1,18 +1,20 @@
 import { Text, StyleSheet } from "react-native"
+import { theme } from "./utils/theme"
 
 const textStyle = StyleSheet.create({
   text: {
-    fontSize: 16
+    fontSize: 16,
   }
 })
 
-const StyledText = ({ styledText, children }) => {
+const StyledText = ({ name, styledText, children }) => {
 
     const useStyle = [
-      styledText && textStyle.text
+      styledText && textStyle.text,
+      name ? theme.profileTitle : null
     ]
   
-    return <Text style={useStyle}>{ children }</Text>
+    return <Text>{ children }</Text>
   }
 
   export default StyledText

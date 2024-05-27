@@ -1,27 +1,34 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import Constants from 'expo-constants';
+import { theme } from './utils/theme';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#24292e',
-    minWidth: '100vw',
-    marginBottom: "15px"
+    backgroundColor: theme.appBarColor,
+    minWidth: 100,
+    marginBottom: 18,
   },
   textStyle: {
-        color: '#fff',
-        fontSize: '17px',
-        fontWeight: '1.2rem',
-        padding: '10px'
+    color: '#fff',
+    fontSize: 17,
+    padding: 15,
   }
 });
 
+
+  const containerStyle = [
+    styles.container
+  ]
+
 const AppBar = ({ status }) => {
-  return <View style={styles.container}>
+  return (
+  <Pressable style={containerStyle}>
     <Text style={styles.textStyle}>
-    { status }
+      { status }
     </Text>
-    </View>;
+  </Pressable>
+  );
 };
 
 export default AppBar;
