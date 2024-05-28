@@ -5,7 +5,7 @@ const style = StyleSheet.create({
     content: {
         display: 'flex',
         flexDirection: 'column',
-        gap: 5
+        paddingLeft: 15,
     }
 })
 
@@ -18,8 +18,8 @@ const SingleRepoHeader = ({ item }) => {
     return (
     <View style={repoMainStyle}>
         <StyledText styledText name>{item.fullName}</StyledText>
-        <StyledText styledText >Description: {item.description}</StyledText>
-        <StyledText styledText >Language: {item.language}</StyledText>
+        <StyledText styledText gap>{item.description}</StyledText>
+        <StyledText styledText gap language>{item.language}</StyledText>
     </View>
     )
 }

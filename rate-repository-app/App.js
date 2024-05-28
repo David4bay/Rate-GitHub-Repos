@@ -2,6 +2,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import AppBar from './components/AppBar';
 import RepositoryList from './components/RepositoryList';
+import { theme } from './components/utils/theme';
 import { notchTitle } from './components/utils/utils'
 
 function App() {
@@ -16,10 +17,13 @@ function App() {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
+    flexDirection: 'column',
     backgroundColor: '#fff',
-    minHeight: 100,
+    minHeight: 'auto',
     minWidth: 100,
     overflow: 'scroll',
+    fontFamily: theme.fonts.main,
     marginRight: 10
   },
 });

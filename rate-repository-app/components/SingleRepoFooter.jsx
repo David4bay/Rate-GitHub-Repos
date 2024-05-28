@@ -1,13 +1,23 @@
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import StyledText from './StyledText'
+import RepoFooterStat from './RepoFooterStat'
 
 const styles = StyleSheet.create({
     listSyle: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        paddingTop: 7,
+        paddingBottom: 7
+    },
+    listStyle: {
+        display: 'flex',
+        flexDirection: 'column-reverse',
+        margin: 5,
+        alignItems: 'center'
     }
 })
+
 
 const SingleRepoFooter = ({ rowActive, item}) => {
 
@@ -15,19 +25,23 @@ const SingleRepoFooter = ({ rowActive, item}) => {
         styles.listSyle
     ]
 
+    const listItemStyle = [
+        styles.listStyle
+    ]
+
     return (
         <View style={rowStyle}>
-            <View>
-                <StyledText styledText >Stars: {item.stargazersCount}</StyledText>
+            <View style={listItemStyle}>
+                <RepoFooterStat item={item.stargazersCount} textContent={'Stars '} />
             </View>
-            <View>
-                <StyledText styledText >Forks: {item.forksCount}</StyledText>
+            <View style={listItemStyle}>
+                <RepoFooterStat item={item.forksCount} textContent={'Forks '} />
             </View>
-            <View>
-                <StyledText styledText >Rating: {item.ratingAverage}</StyledText>
+            <View style={listItemStyle}>
+                <RepoFooterStat item={item.ratingAverage} textContent={'Rating '} />
             </View>
-            <View>
-                <StyledText styledText >Reviews: {item.reviewCount}</StyledText>
+            <View style={listItemStyle}>
+                <RepoFooterStat item={item.reviewCount} textContent={'Reviews '} />
             </View>
         </View>
     )

@@ -1,7 +1,6 @@
-import { View, StyleSheet, Image, FlatList } from "react-native"
+import { View, StyleSheet, Image } from "react-native"
 import SingleRepoHeader from "./SingleRepoHeader"
 import SingleRepoFooter from "./SingleRepoFooter"
-import StyledText from "./StyledText"
 
 const styles = StyleSheet.create({
     container: {
@@ -14,8 +13,7 @@ const styles = StyleSheet.create({
     },
     contentStyle: {
       display: 'flex',
-      flexDirection: 'row',
-      paddingLeft: 5
+      flexDirection: 'row'
     }
   })
 

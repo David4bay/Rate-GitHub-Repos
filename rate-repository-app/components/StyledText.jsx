@@ -1,19 +1,30 @@
 import { Text, StyleSheet } from "react-native"
 import { theme } from "./utils/theme"
 
-const textStyle = StyleSheet.create({
-  text: {
-    fontSize: 16,
-  }
-})
 
-const StyledText = ({ name, styledText, children }) => {
+const StyledText = ({ gap, name, styledText, language, bigText, grey, children }) => {
+  
+  const languageStyling = StyleSheet.create({
+    tagStyle: {
+      display: 'flex',
+      backgroundColor: theme.colors.primary,
+      maxWidth: 'max-content',
+      alignSelf: 'flex-start',
+      color: '#fff',
+      borderRadius: 5,
+      fontWeight: grey ? 600 : 300,
+      fontSize: grey ? theme.fontSizes.body : theme.fontSizes.subheading
+    }
+  })
 
-  // console.log("typeof name", name)
-
-    const useStyle = [
-      styledText && textStyle.text,
-      name ? theme.profileTitle : null
+  const useStyle = [
+      styledText && theme.textStyle,
+      name && theme.profileTitle,
+      gap && theme.profileGap,
+      language && theme.languageStyle,
+      language && languageStyling.tagStyle,
+      bigText && theme.boldText,
+      grey && theme.repoNumberStat
     ]
   
     return <Text style={useStyle}>{ children }</Text>
