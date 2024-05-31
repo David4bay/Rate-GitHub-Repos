@@ -2,7 +2,7 @@ import { Text, StyleSheet } from "react-native"
 import { theme } from "./utils/theme"
 
 
-const StyledText = ({ gap, name, styledText, language, bigText, grey, children }) => {
+const StyledText = ({ gap, name, styledText, language, bigText, grey, wrap, children }) => {
   
   const languageStyling = StyleSheet.create({
     tagStyle: {
@@ -24,10 +24,11 @@ const StyledText = ({ gap, name, styledText, language, bigText, grey, children }
       language && theme.languageStyle,
       language && languageStyling.tagStyle,
       bigText && theme.boldText,
-      grey && theme.repoNumberStat
+      grey && theme.repoNumberStat,
+      wrap && theme.wrapText
     ]
   
-    return <Text style={useStyle}>{ children }</Text>
+    return <Text style={useStyle} >{ children }</Text>
   }
 
   export default StyledText

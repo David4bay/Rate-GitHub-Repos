@@ -1,9 +1,12 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import RenderItem from './RenderItem';
+import { theme } from './utils/theme';
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
+    backgroundColor: theme.colors.textSecondary,
+    marginBottom: 15
   },
 });
 
@@ -68,4 +71,4 @@ const RepositoryList = () => {
   );
 };
 
-export default RepositoryList;
+export default RepositoryList

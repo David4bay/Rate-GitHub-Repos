@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         paddingTop: 7,
-        paddingBottom: 7
+        paddingBottom: 7,
+        paddingLeft: 15
     },
     listStyle: {
         display: 'flex',

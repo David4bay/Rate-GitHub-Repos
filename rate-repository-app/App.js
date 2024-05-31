@@ -3,29 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppBar from './components/AppBar';
 import RepositoryList from './components/RepositoryList';
 import { theme } from './components/utils/theme';
+import { NativeRouter } from 'react-router-native'
 import { notchTitle } from './components/utils/utils'
+import Main from './components/Main';
 
 function App() {
 
   return (
-    <View style={styles.container}>
-      <AppBar status={notchTitle} />
-      <RepositoryList />
+    <View>
+      <NativeRouter>
+        <Main />
+      </NativeRouter>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-    minHeight: 'auto',
-    minWidth: 100,
-    overflow: 'scroll',
-    fontFamily: theme.fonts.main,
-    marginRight: 10
-  },
-});
 
 export default App
