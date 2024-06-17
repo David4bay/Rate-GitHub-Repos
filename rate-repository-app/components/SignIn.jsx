@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import { theme } from './utils/theme'
 import * as yup from 'yup'
 import useLoggedIn from './utils/hooks/useLoggedIn'
-import { useLocation, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 
 const initialValues = {
     username: '',
