@@ -1,7 +1,10 @@
 import { View, Text, TextInput, Pressable } from 'react-native'
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
 import { theme } from './utils/theme'
 import * as yup from 'yup'
+import useLoggedIn from './utils/hooks/useLoggedIn'
+import { useLocation, useNavigate } from 'react-router'
 
 const initialValues = {
     username: '',
@@ -35,6 +38,10 @@ const validationSchema = yup.object().shape({
 
 const SignIn = ({ onSubmit }) => {
 
+    const navigate = useNavigate()
+    const {data} = useLoggedIn()
+
+    
     const formik = useFormik({
         initialValues,
         validationSchema ,
@@ -51,9 +58,15 @@ const SignIn = ({ onSubmit }) => {
 
     const borders = [
         theme.borders,
-        formik.touched.password && { borderColor: '#d73a4a' } || 
-        formik.touched.username && { borderColor: '#d73a4a' }
+        formik.touched.password && { borderColor: '#00affa' } || 
+        formik.touched.username && { borderColor: '#00affa' }
     ]
+    
+    useEffect(() => {
+        if (data.me !== null) {
+            navigate("/repositories")
+        }
+    }, [data.me])
 
   return (
     <View style={containerStyle}>

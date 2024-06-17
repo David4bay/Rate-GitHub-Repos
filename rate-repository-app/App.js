@@ -1,18 +1,27 @@
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import AppBar from './components/AppBar';
+import createApolloClient from './components/utils/apolloClient'
 import RepositoryList from './components/RepositoryList';
-import { theme } from './components/utils/theme';
-import { NativeRouter } from 'react-router-native'
+import { StyleSheet, Text, View } from 'react-native';
 import { notchTitle } from './components/utils/utils'
+import { NativeRouter } from 'react-router-native'
+import { ApolloProvider } from '@apollo/client'
+import AuthStorage from './components/utils/authStorage';
+import AuthStorageContext from './components/contexts/authContext';
 import Main from './components/Main';
 
-function App() {
+const authStorage = new AuthStorage()
+const apolloClient = createApolloClient(authStorage)
 
+function App() {
+  
   return (
     <View>
       <NativeRouter>
-        <Main />
+        <ApolloProvider client={apolloClient}>
+          <AuthStorageContext.Provider value={authStorage}>
+            <Main />
+          </AuthStorageContext.Provider>
+        </ApolloProvider>
       </NativeRouter>
     </View>
   );

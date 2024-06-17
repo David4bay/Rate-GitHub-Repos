@@ -1,3 +1,6 @@
+import Constants from 'expo-constants';
+import { StyleSheet } from 'react-native'
+
 export const theme = {
     textStyle: {
         fontSize: 16,
@@ -85,3 +88,23 @@ export const theme = {
         textAlign: 'left'
     }
 }
+
+export const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: theme.appBarColor,
+        minWidth: 100,
+        marginBottom: 18,
+      },
+      textStyle: {
+        fontSize: 12,
+        color: '#fff',
+        padding: 13,
+      },
+      horizontal: {
+        display: 'flex',
+        flexDirection: 'row'
+      }
+})

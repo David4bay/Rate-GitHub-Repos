@@ -1,60 +1,45 @@
 import { View, StyleSheet, Text, ScrollView, Pressable } from 'react-native';
-import Constants from 'expo-constants';
-import { theme } from './utils/theme';
 import { rerouter } from './utils/utils';
 import { Link } from 'react-router-native';
+import { styles } from './utils/theme';
+import useLoggedIn from './utils/hooks/useLoggedIn';
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.appBarColor,
-    minWidth: 100,
-    marginBottom: 18,
-  },
-  textStyle: {
-    fontSize: 12,
-    color: '#fff',
-    // fontSize: 19,
-    padding: 13,
-    // fontWeight: 400
-  },
-  horizontal: {
-    display: 'flex',
-    flexDirection: 'row'
-  }
-});
-
-  const horizontalStyle = [
-    styles.horizontal
-  ]
-
+const AppBar = ({ status }) => {
+  
   const containerStyle = [
     styles.container
   ]
-
+  
   const textStyles = [
     styles.textStyle
   ]
 
-const AppBar = ({ status }) => {
+  const {data, error, loading, refetch, handleLogout } = useLoggedIn()
 
-  return (
+  if (loading) return <Text> Loading... </Text>
+
+  console.log("data in AppBar", data)
+  
+  return data.me ? (
+    <View>
+      <ScrollView horizontal style={containerStyle}>
+            <Link to="repositories" component={Pressable}>
+              <Text style={textStyles}>Repositories</Text>
+            </Link>
+            <Pressable onPress={handleLogout}>
+              <Text style={textStyles}>Sign out</Text>
+            </Pressable>
+      </ScrollView>
+    </View>
+    ) : (
   <View>
     <ScrollView horizontal style={containerStyle}>
-    {status.map((linkTitle) => {
-
-    const route = rerouter(linkTitle)
-    return (
-            <Link key={linkTitle} to={route} component={Pressable}>
-              <Text style={textStyles}>{linkTitle}</Text>
+            <Link to="sign in" component={Pressable}>
+              <Text style={textStyles}>Sign in</Text>
             </Link>
-    )
-})}
-</ScrollView>
+    </ScrollView>
   </View>
-  );
-};
+  )
+}
 
 export default AppBar
