@@ -1,33 +1,21 @@
 import Loading from './utils/state/Loading';
 import { useEffect } from 'react'
-import RenderItem from './RenderItem';
-import { theme } from './utils/theme';
-import { FlatList, View, Text, StyleSheet } from 'react-native';
 import useRepositories from '../components/utils/hooks/useRepositories'
 import { useNavigate } from 'react-router';
 import useLoggedIn from './utils/hooks/useLoggedIn';
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-    backgroundColor: theme.colors.textSecondary,
-    marginBottom: 15
-  },
-});
-
-
-const ItemSeparator = () => <View style={styles.separator} />;
+import Constants from 'expo-constants';
+import RepositoryListContainer from './RepositoryListContainer';
 
 const RepositoryList = () => {
 
-  const { data } = useLoggedIn()
   const navigate = useNavigate()
+  const { data } = useLoggedIn()
 
   useEffect(() => {
-    if (!data.me) {
+    if (!data?.me?.id && Constants.expoConfig.extra.NODE_ENV !== 'test') {
       navigate("/")
     }
-  }, [])
+  }, [data?.me?.id])
 
   const { repositories, loading, refetch, error } = useRepositories();
 
@@ -35,15 +23,8 @@ const RepositoryList = () => {
 
   if (loading  || error) return <Loading loading={loading} error={error} />
 
-  console.log("repositoryNode data", repositoryNodes)
-
   return (
-    <FlatList
-      data={repositoryNodes}
-      ItemSeparatorComponent={ItemSeparator}
-      // other props
-      renderItem={RenderItem}
-    />
+   <RepositoryListContainer repositories={repositoryNodes} />
   );
 };
 

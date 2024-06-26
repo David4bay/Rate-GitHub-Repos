@@ -29,6 +29,8 @@ export default  {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "env": process.env.URL
-    }
+      "env": process.env.URL,
+      "NODE_ENV": process.env.NODE_ENV
+    },
+    "entryPoint": "./App.js"
   }

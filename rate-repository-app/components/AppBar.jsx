@@ -1,10 +1,25 @@
 import { View, StyleSheet, Text, ScrollView, Pressable } from 'react-native';
-import { rerouter } from './utils/utils';
+import Constants from 'expo-constants';
 import { Link } from 'react-router-native';
-import { styles } from './utils/theme';
 import useLoggedIn from './utils/hooks/useLoggedIn';
+import { theme } from './utils/theme';
 
 const AppBar = ({ status }) => {
+
+ const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: theme.appBarColor,
+        minWidth: 100,
+      },
+      textStyle: {
+        fontSize: 12,
+        color: '#fff',
+        padding: 13,
+      }
+    })
   
   const containerStyle = [
     styles.container
@@ -17,14 +32,15 @@ const AppBar = ({ status }) => {
   const {data, error, loading, refetch, handleLogout } = useLoggedIn()
 
   if (loading) return <Text> Loading... </Text>
-
-  console.log("data in AppBar", data)
   
   return data.me ? (
     <View>
       <ScrollView horizontal style={containerStyle}>
-            <Link to="repositories" component={Pressable}>
+            <Link to="/repositories" component={Pressable}>
               <Text style={textStyles}>Repositories</Text>
+            </Link>
+            <Link to="/create-review" component={Pressable}>
+              <Text style={textStyles}>Create a review</Text>
             </Link>
             <Pressable onPress={handleLogout}>
               <Text style={textStyles}>Sign out</Text>
@@ -34,8 +50,11 @@ const AppBar = ({ status }) => {
     ) : (
   <View>
     <ScrollView horizontal style={containerStyle}>
-            <Link to="sign in" component={Pressable}>
+            <Link to="/" component={Pressable}>
               <Text style={textStyles}>Sign in</Text>
+            </Link>
+            <Link to="/sign-up" component={Pressable}>
+              <Text style={textStyles}>Sign up</Text>
             </Link>
     </ScrollView>
   </View>

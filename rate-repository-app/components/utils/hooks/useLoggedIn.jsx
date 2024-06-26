@@ -15,7 +15,6 @@ const useLoggedIn = () => {
       const apolloClient = useApolloClient()
 
       const handleLogout = async () => {
-        console.log("sign out clicked")
         await authStorage.removeAccessToken()
         await apolloClient.resetStore()
         navigate("/")

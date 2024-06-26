@@ -5,6 +5,7 @@ import LOGIN from '../graphql/mutations';
 const useSignin = () => {
     const apolloClient = useApolloClient();
     const authStorage = useAuthStorage();
+    
     const [authenticate, { data, loading, error }] = useMutation(LOGIN);
 
     const signIn = async ({ username, password }) => {

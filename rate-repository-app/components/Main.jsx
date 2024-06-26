@@ -7,6 +7,10 @@ import useSignin from '../components/utils/hooks/useSigin'
 import SignIn from './SignIn';
 import { useApolloClient } from '@apollo/client';
 import useAuthStorage from './utils/hooks/useAuthStorage';
+import SingleRepositoryView from './SingleRepositoryView';
+import ReviewForm from './ReviewForm';
+import SignUp from './SignUp';
+// import SingleView from './SingleView';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,17 +32,14 @@ function Main() {
   const [signIn] = useSignin();
 
   const onSubmit = async ({ username, password }) => {
-    console.log("username", username, "password", password);
     
     const credentials = { username, password };
 
     try {
       const data = await signIn(credentials);
-      console.log("data", data);
 
       if (data?.authenticate?.accessToken) {
         const token = data.authenticate.accessToken;
-        console.log("token in main", token);
         
         const tokenExists = await authStorage.getAccessToken();
 
@@ -48,7 +49,6 @@ function Main() {
 
         await apolloClient.resetStore()
         await authStorage.setAccessToken(token);
-        console.log("access token from main", token);
       }
     } catch (e) {
       console.log(e);
@@ -60,7 +60,12 @@ return (
     <AppBar />
     <Routes>
       <Route path="/" element={<SignIn onSubmit={onSubmit} />} />
-      <Route path="/repositories" element={<RepositoryList />} />
+      <Route path="/create-review/" element={<ReviewForm />} />
+      <Route path="/repositories/" element={<RepositoryList />} />
+      <Route path="/repositories/*">
+        <Route path=":id" element={<SingleRepositoryView />} />
+      </Route>
+      <Route path="/sign-up" element={<SignUp />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   </View>

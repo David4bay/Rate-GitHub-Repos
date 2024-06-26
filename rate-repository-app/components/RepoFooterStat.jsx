@@ -10,8 +10,8 @@ const RepoFooterStat = ({ item, textContent }) => {
             </StyledText>
             <StyledText styledText bigText>
                 {new Intl.NumberFormat('en-US', {
-    notation: "compact"
-  }).format(item)}
+                        notation: "compact"
+                    }).format(item)}
             </StyledText>
         </React.Fragment>
     )

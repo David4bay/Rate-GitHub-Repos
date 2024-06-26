@@ -1,20 +1,11 @@
 import { View, StyleSheet } from 'react-native'
 import StyledText from './StyledText'
-
-const style = StyleSheet.create({
-    content: {
-        display: 'flex',
-        flexDirection: 'column',
-        paddingLeft: 15,
-        // overflow: 'visible',
-        // flexWrap: 'wrap'
-    }
-})
+import { styles } from './utils/theme'
 
 const SingleRepoHeader = ({ item }) => {
 
     const repoMainStyle = [
-        style.content
+        styles.content
     ]
 
     return (

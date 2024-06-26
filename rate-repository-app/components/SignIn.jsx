@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { View, Text, TextInput, Pressable } from 'react-native'
 import { useEffect } from 'react'
 import { useFormik } from 'formik'
@@ -37,14 +38,14 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = ({ onSubmit }) => {
-
+    
     const navigate = useNavigate()
-    const {data} = useLoggedIn()
 
+    const { data } = useLoggedIn()
     
     const formik = useFormik({
         initialValues,
-        validationSchema ,
+        validationSchema,
         onSubmit
     })
 
@@ -63,10 +64,10 @@ const SignIn = ({ onSubmit }) => {
     ]
     
     useEffect(() => {
-        if (data.me !== null) {
+        if (data?.me?.id && Constants.expoConfig.extra.NODE_ENV !== 'test') {
             navigate("/repositories")
         }
-    }, [data.me])
+    }, [data?.me?.id])
 
   return (
     <View style={containerStyle}>
