@@ -122,6 +122,9 @@ export const theme = {
     searchBarContainerStyle: {
         backgroundColor: '#586069'
     },
+    pickerBarContainerStyle: {
+        color: '#586069'
+    },
     searchBarStyle: {
         backgroundColor: '#ffffff',
         padding: 8, 
@@ -251,5 +254,39 @@ export const singleViewStyling = StyleSheet.create({
     contentStyle: {
      display: 'flex',
      flexDirection: 'row'
+    },
+    buttonStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10
+    }
+})
+
+export const deleteReviewStyling = StyleSheet.create({
+    viewRepoStyle: {
+        color: '#ffffff',
+        backgroundColor: '#007AFF',
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 4,
+        // marginHorizontal: -40,
+        paddingRight: 50,
+        textAlign: 'center'
+    },
+    deleteRepoStyle: {
+        color: '#ffffff',
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 4,
+        // marginHorizontal: -40,
+        backgroundColor: '#FF6B6B',
+        fontWeight: 500,
+        paddingLeft: 50,
+        textAlign: 'center'
+    },
+    textStyling: {
+        color: '#ffffff',
+        fontWeight: 500,
+        textAlign: 'center'
     }
 })

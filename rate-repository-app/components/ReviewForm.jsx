@@ -46,7 +46,7 @@ const ReviewForm = () => {
             const review = { ownerName, repositoryName, rating: Number(rating), text }
             const { data } = await submitReview(review)
     
-            navigate(`/repository/${data.repository.respositoryId}`)
+            return navigate(`/repository/${data.repository.respositoryId}`)
         } catch(err) {
             console.error('Error submittin review', err)
         }

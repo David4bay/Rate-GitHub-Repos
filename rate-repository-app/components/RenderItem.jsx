@@ -6,6 +6,7 @@ import { Link } from "react-router-native"
 const styles = StyleSheet.create({
     container: {
       paddingLeft: 10
+
     },
 
     imageStyle: {
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     },
 
     marginTop: {
-      marginTop: 20
+      marginTop: 10
     }
   })
 
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     
     const containerStyle = [
       styles.container,
-      styles.paddingTop
+      styles.marginTop
     ]
 
     const viewStyle = [

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import RenderItem from './RenderItem';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { styles, theme } from './utils/theme';
@@ -11,11 +10,10 @@ const separatorStyle = [
 
 const ItemSeparator = () => <View style={separatorStyle} />;
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, searchedRepo, setSearchedRepo, selectedCategory, setSelectedCategory }) => {
 
-  const [searchedRepo, setSearchedRepo] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
-
+  console.log("repositories", repositories)
+  
     return (
         <FlatList
           data={repositories}

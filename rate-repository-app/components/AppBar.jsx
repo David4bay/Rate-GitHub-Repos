@@ -39,6 +39,9 @@ const AppBar = ({ status }) => {
             <Link to="/repositories" component={Pressable}>
               <Text style={textStyles}>Repositories</Text>
             </Link>
+            <Link to="/my-reviews" component={Pressable}>
+              <Text style={textStyles}>My reviews</Text>
+            </Link>
             <Link to="/create-review" component={Pressable}>
               <Text style={textStyles}>Create a review</Text>
             </Link>

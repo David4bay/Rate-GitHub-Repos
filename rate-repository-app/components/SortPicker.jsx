@@ -7,15 +7,20 @@ const SortPicker = ({ selectedCategory, setSelectedCategory }) => {
         theme.pickerStyle
     ]
 
+    const disabledStyle = [
+        theme.pickerBarContainerStyle
+    ]
+
     return (
         <Picker
         selectedValue={selectedCategory}
         onValueChange={(itemValue) => setSelectedCategory(itemValue)}
         style={pickerBodyStyle}
         >
-            <Picker.Item label="Latest Repositories" title="LATEST" />
-            <Picker.Item label="Highest Rated Repositories" title="HIGHEST" />
-            <Picker.Item label="Lowest Rated Repositories" title="LOWEST" />
+            <Picker.Item style={disabledStyle} label="Select an item..." value="" enabled={false} />
+            <Picker.Item label="Latest Repositories" value="LATEST" />
+            <Picker.Item label="Highest Rated Repositories" value="HIGHEST" />
+            <Picker.Item label="Lowest Rated Repositories" value="LOWEST" />
         </Picker>
     )
 }

@@ -1,12 +1,17 @@
 import Loading from './utils/state/Loading';
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import useRepositories from '../components/utils/hooks/useRepositories'
 import { useNavigate } from 'react-router';
 import useLoggedIn from './utils/hooks/useLoggedIn';
 import Constants from 'expo-constants';
+import { useDebounce } from 'use-debounce'
 import RepositoryListContainer from './RepositoryListContainer';
 
 const RepositoryList = () => {
+
+  const [searchedRepo, setSearchedRepo] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('LATEST')
+  const [debouncedSearchKeyword] = useDebounce(searchedRepo, 1000)
 
   const navigate = useNavigate()
   const { data } = useLoggedIn()
@@ -17,14 +22,24 @@ const RepositoryList = () => {
     }
   }, [data?.me?.id])
 
-  const { repositories, loading, refetch, error } = useRepositories();
+  const { repositories, loading, refetch, error } = useRepositories({
+      orderBy: selectedCategory === 'LATEST' ? 'CREATED_AT' : 'RATING_AVERAGE',
+      orderDirection: selectedCategory === 'LOWEST' ? 'ASC' : 'DESC',
+      searchKeyword: debouncedSearchKeyword,
+    });
 
   const repositoryNodes = repositories ? repositories?.repositories?.edges?.map((edge) => edge.node) : []
 
   if (loading  || error) return <Loading loading={loading} error={error} />
 
   return (
-   <RepositoryListContainer repositories={repositoryNodes} />
+   <RepositoryListContainer 
+   repositories={repositoryNodes} 
+   searchedRepo={searchedRepo}
+   setSearchedRepo={setSearchedRepo}
+   selectedCategory={selectedCategory}
+   setSelectedCategory={setSelectedCategory}
+   />
   );
 };
 

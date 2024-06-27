@@ -36,7 +36,7 @@ const SingleView = ({ repository }) => {
     const openExternalLink = (url) => {
       Linking.openURL(url);
     }
-
+    console.log("repository", repository)
     return (
       <>
         <View style={containerStyle} testID="repositoryItem">

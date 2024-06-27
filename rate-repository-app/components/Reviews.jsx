@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import { parseISO, format } from 'date-fns';
-import { styles, theme } from './utils/theme'
+import { styles } from './utils/theme'
 
 const Reviews = ({ item }) => {
 

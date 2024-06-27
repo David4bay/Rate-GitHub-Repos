@@ -10,6 +10,7 @@ import useAuthStorage from './utils/hooks/useAuthStorage';
 import SingleRepositoryView from './SingleRepositoryView';
 import ReviewForm from './ReviewForm';
 import SignUp from './SignUp';
+import MyReviews from './MyReviews';
 // import SingleView from './SingleView';
 
 const styles = StyleSheet.create({
@@ -61,6 +62,7 @@ return (
     <Routes>
       <Route path="/" element={<SignIn onSubmit={onSubmit} />} />
       <Route path="/create-review/" element={<ReviewForm />} />
+      <Route path="/my-reviews" element={<MyReviews />} />
       <Route path="/repositories/" element={<RepositoryList />} />
       <Route path="/repositories/*">
         <Route path=":id" element={<SingleRepositoryView />} />
