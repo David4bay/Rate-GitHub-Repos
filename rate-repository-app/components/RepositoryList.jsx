@@ -11,7 +11,7 @@ const RepositoryList = () => {
 
   const [searchedRepo, setSearchedRepo] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('LATEST')
-  const [debouncedSearchKeyword] = useDebounce(searchedRepo, 1000)
+  const [debouncedSearchKeyword] = useDebounce(searchedRepo, 5000)
 
   const navigate = useNavigate()
   const { data } = useLoggedIn()

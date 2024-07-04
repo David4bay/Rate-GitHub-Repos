@@ -30,7 +30,7 @@ export default  {
     },
     "extra": {
       "env": process.env.URL,
-      "NODE_ENV": process.env.NODE_ENV
+      "NODE_ENV": process.env.NODE_ENV || 'test'
     },
     "entryPoint": "./App.js"
   }

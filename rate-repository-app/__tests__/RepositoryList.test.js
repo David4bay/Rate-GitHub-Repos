@@ -1,10 +1,9 @@
-import { render, screen, within } from '@testing-library/react-native';
+import { render, screen, waitFor, within } from '@testing-library/react-native';
 import { MemoryRouter } from 'react-router';
 import RepositoryListContainer from '../components/RepositoryListContainer';
 
-describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
-    it('renders repository information correctly', () => {
+    it('renders repository information correctly', async () => {
       const repositories = {
         totalCount: 8,
         pageInfo: {
@@ -51,12 +50,12 @@ describe('RepositoryList', () => {
       }
 
       render(
-      <MemoryRouter>
-        <RepositoryListContainer repositories={repositories} />
-      </MemoryRouter>
+        <MemoryRouter>
+          <RepositoryListContainer repositories={repositories.edges.map(edge => edge.node)} />
+        </MemoryRouter>
       );
 
-      const repositoryItems = screen.getAllByTestId('repositoryItem');
+      const repositoryItems = await waitFor(() => screen.getAllByTestId('repositoryItem'));
       expect(repositoryItems).toHaveLength(2); // Assuming there are 2 repositories
 
       repositoryItems.forEach((item, index) => {
@@ -64,22 +63,13 @@ describe('RepositoryList', () => {
 
         // Query within the repository item
         const repositoryItem = within(item);
-
         expect(repositoryItem.getByText(repository.fullName)).toBeDefined();
-
         expect(repositoryItem.getByText(repository.description)).toBeDefined();
-
         expect(repositoryItem.getByText(repository.language)).toBeDefined();
-
         expect(repositoryItem.getByText(formatNumber(repository.stargazersCount))).toBeDefined();
-
         expect(repositoryItem.getByText(formatNumber(repository.forksCount))).toBeDefined();
-
         expect(repositoryItem.getByText(formatNumber(repository.ratingAverage))).toBeDefined();
-
         expect(repositoryItem.getByText(formatNumber(repository.reviewCount))).toBeDefined();
-
       });
     });
   });
-});

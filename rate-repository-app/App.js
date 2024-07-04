@@ -1,8 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
 import createApolloClient from './components/utils/apolloClient'
-import RepositoryList from './components/RepositoryList';
-import { StyleSheet, Text, View } from 'react-native';
-import { notchTitle } from './components/utils/utils'
+import { View } from 'react-native';
 import { NativeRouter } from 'react-router-native'
 import { ApolloProvider } from '@apollo/client'
 import AuthStorage from './components/utils/authStorage';

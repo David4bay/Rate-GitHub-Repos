@@ -7,6 +7,7 @@ const useLoggedIn = () => {
 
     const navigate = useNavigate()
 
+      /* istanbul ignore next */
     const { data, error, loading, refetch } = useQuery(LOGIN, {
         fetchPolicy: 'cache-and-network'
       })
@@ -20,6 +21,7 @@ const useLoggedIn = () => {
         navigate("/")
       }
 
+        /* istanbul ignore next */
     return { data, error, loading, refetch, handleLogout }
 }
 

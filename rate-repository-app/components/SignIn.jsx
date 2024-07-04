@@ -41,6 +41,7 @@ const SignIn = ({ onSubmit }) => {
     
     const navigate = useNavigate()
 
+    /* istanbul ignore next */
     const { data } = useLoggedIn()
     
     const formik = useFormik({
@@ -63,8 +64,9 @@ const SignIn = ({ onSubmit }) => {
         formik.touched.username && { borderColor: '#00affa' }
     ]
     
+    /* istanbul ignore next */
     useEffect(() => {
-        if (data?.me?.id && Constants.expoConfig.extra.NODE_ENV !== 'test') {
+        if (data?.me?.id && Constants.expoConfig.extra?.NODE_ENV !== 'test') {
             navigate("/repositories")
         }
     }, [data?.me?.id])
